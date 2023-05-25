@@ -77,11 +77,9 @@ def duration_data(participant):
     df['duration'] = df['duration'].astype('int64')
     df = df.groupby(['sentence', 'word']).agg({ 'duration': lambda x: x.max() - x.min()})
     df = df.reset_index()
+    df['time_per_char'] = df['duration'] / df['word'].str.len()
 
-    # Add participant uid
-    df['uid'] = participant
-
-    return df
+    return pd.DataFrame({'avg_char_duration': df['time_per_char'].mean()}, index=[participant])
 
 # Get simplified df of duration data
 duration_df = duration_data(participants[0])
@@ -89,4 +87,8 @@ del participants[0]
 for participant in participants:
     duration_df = duration_df._append(duration_data(participant))
 
-print(duration_df)
+# Combine data
+data = error_df.join(duration_df).join(participants_df)
+
+# Export data
+data.to_csv('prepared_data.csv', sep='\t', encoding='utf-8')
