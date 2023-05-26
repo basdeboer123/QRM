@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -10,10 +11,16 @@ for file in logfiles:
     participants.append(Path(file).stem)
 
 # Get simplified df of participants
-participants_df = pd.read_csv('Data/metadata.tsv', sep='\t')
-participants_df = participants_df.set_index('uid')
-participants_df['screen_size'] = participants_df['screen_width'] * participants_df['screen_height']
-participants_df = participants_df[['swipe_finger', 'screen_size']]
+def participant_basics(participant):
+    # Read json data
+    with open(f'Data/swipelogs/{participant}.json') as user_file:
+        file_contents = user_file.read()
+    data = json.loads(file_contents)
+
+    # Calculate screen size
+    size = data['screenWidth'] * data['screenHeight']
+
+    return pd.DataFrame({'screen_size': size, 'swipe_finger': data['swipeFinger']}, index=[participant])    
 
 # Get participant df
 def participant_data(participant):
@@ -61,12 +68,6 @@ def error_data(participant):
   
     return pd.DataFrame({'error_rate': [total_errors / words_amount]}, index=[participant])
 
-# Get simplified df of error data
-error_df = error_data(participants[0])
-del participants[0]
-for participant in participants:
-    error_df = error_df._append(error_data(participant))
-
 # Get duration df
 def duration_data(participant):
     # Get participant df
@@ -81,14 +82,23 @@ def duration_data(participant):
 
     return pd.DataFrame({'avg_char_duration': df['time_per_char'].mean()}, index=[participant])
 
-# Get simplified df of duration data
+# Get simplified df of dataframes
+participants_df = participant_basics(participants[0])
+error_df = error_data(participants[0])
 duration_df = duration_data(participants[0])
 del participants[0]
 for participant in participants:
+    participants_df = participants_df._append(participant_basics(participant))
+    error_df = error_df._append(error_data(participant))
     duration_df = duration_df._append(duration_data(participant))
 
 # Combine data
 data = error_df.join(duration_df).join(participants_df)
+data.index.name = "uid"
+
+# Remove missing values (missing swipe finger, multiple users that never typed a word right)
+data = data.dropna(subset=['avg_char_duration'])
+data = pd.notnull(data)
 
 # Export data
 data.to_csv('prepared_data.csv', sep='\t', encoding='utf-8')
