@@ -97,8 +97,7 @@ data = error_df.join(duration_df).join(participants_df)
 data.index.name = "uid"
 
 # Remove missing values (missing swipe finger, multiple users that never typed a word right)
-data = data.dropna(subset=['avg_char_duration'])
-data = pd.notnull(data)
+data = data.dropna(how='any')
 
 # Export data
 data.to_csv('prepared_data.csv', sep='\t', encoding='utf-8')
