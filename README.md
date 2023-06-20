@@ -12,7 +12,7 @@ An overview of the files in this github repository:
     - repeated_measures_outliers_rm.csv: data frame for repeated measures of time and error for the first 20 words for every participant, with outliers removed.
 
 - Code:
-    - preparation.py: file for creating the intitial dataframe from the participants swipe log files (in DATA). This is the dataframa we initially wanted to use for our research (including  IVs:screen_size & swipe_finger, DVs: error & time)
+    - preparation.py: file for creating the initial dataframe from the participants swipe log files (in DATA). This is the dataframa we initially wanted to use for our research (including  IVs: screen_size & swipe_finger, DVs: error & time)
     - exploration_of_data.ipynb: first exploration of the data (showing means, plots and possible significance test suitable for this data), this file is not used and just here to show you our process of exploring the data.
     - Outliers_normality_MANOVA.ipynb: Visualisations of outliers and removing outliers, and Shapiro Wilk test for normality. (also two-factor MANOVA and post hoc tests are included, however, these can not be used to to violation of the normality assumtion)
     - removing outliers per category.ipynb: file for removing the outliers for time and error rate based on all combinations of the independent variables (after tip from Egon)
