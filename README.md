@@ -4,11 +4,11 @@ Project Quantitative Research Methods - On finding an interaction effect between
 An overview of the files in this github repository:
 - Data:
     - Data: How We Swipe dataset from Leiva et al.(2021).
-    - prepared_data.csv: data frame for two-way MANOVA with means for time and error and independend variables swipe_finger and screen_size with one participants per row
+    - prepared_data.csv: data frame for two-way MANOVA with means for time and error and independent variables swipe_finger and screen_size with one participant per row
     - normalized_data.csv: test for normailizing data, after tip from Egon (However, this computation did not work out because it was not suitable for the Two way MANOVA)
     - test_for_removingoutliers_seperately: test for removing outleirs seperately per mixed independent variable combination (tip from Egon)
   
-    - repeated_measures_including_outliers.csv: data frame for repeated measures of time and error of the first 20 words of participants, all data (no ouliers excluded yet)
+    - repeated_measures_including_outliers.csv: data frame for repeated measures of time and error of the first 20 words of participants, all data (no outliers excluded yet)
     - repeated_measures_outliers_rm.csv: data frame for repeated measures of time and error for the first 20 word for every participants, with outliers removed.
 
 - Code:
