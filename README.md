@@ -16,4 +16,4 @@ See here an overview of the files in this github repository:
     - test_removingoutliers_seperately.ipynb: notbook for removing outliers seperatly for every independent variable combination -> this resulted in a bit higher normality, hoever, still very far of from a a normal distribution
     - dataframe_for_repeated_measures.ipynb: creating a dataframe ready for the two-way repeated measures MANOVA. including removing outliers (and a start on including Covariable age, but due to the limited time this is not further explored)
     - The two-factor repeated measures MANOVA is executed in SPPS since this was to complex to do in Python. 
-    - 
+      
