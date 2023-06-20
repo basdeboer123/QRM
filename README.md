@@ -14,8 +14,8 @@ An overview of the files in this github repository:
 - Code:
     - preparation.py: file for creating the initial dataframe from the participants swipe log files (in DATA). This is the dataframa we initially wanted to use for our research (including  IVs: screen_size & swipe_finger, DVs: error & time)
     - exploration_of_data.ipynb: first exploration of the data (showing means, plots and possible significance test suitable for this data), this file is not used and just here to show you our process of exploring the data.
-    - Outliers_normality_MANOVA.ipynb: Visualisations of outliers and removing outliers, and Shapiro Wilk test for normality. (also two-factor MANOVA and post hoc tests are included, however, these can not be used to to violation of the normality assumtion)
-    - removing outliers per category.ipynb: file for removing the outliers for time and error rate based on all combinations of the independent variables (after tip from Egon)
+    - Outliers_normality_MANOVA.ipynb: Visualisations of outliers and removing outliers, and Shapiro Wilk test for normality. (also two-factor MANOVA and post hoc tests are included, however, these can not be used to violation of the normality assumtion)
+    - removing_outliers_per_category.ipynb: file for removing the outliers for time and error rate based on all combinations of the independent variables (after tip from Egon)
     - dataframe_for_repeated_measures.ipynb: creating a dataframe ready for the two-way repeated measures MANOVA. including removing outliers (and a start on including Covariable age, but due to the limited time this is not further explored)
     - The two-factor repeated measures MANOVA is executed in SPPS since this was to complex to do in Python. 
       
