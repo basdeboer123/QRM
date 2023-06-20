@@ -1,5 +1,5 @@
 # QRM
-Project Quantitative Research Methods
+Project Quantitative Research Methods - On finding a interaction effect between hand postures and screen size for time and error rate (for swipe typing)
 
 See here an overview of the files in this github repository:
 - data:
